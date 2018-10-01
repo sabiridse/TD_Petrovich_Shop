@@ -1,4 +1,5 @@
-# TestTaskFront2
+# PetrovichTaskFront2
+# Internet shop by TD Petrovich
 
 ## Project setup
 ```

@@ -1,28 +1,33 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <product v-for="prod in list" v-bind:prod="prod"/>
+<!--     <h1 v-for="prod in list">{{prod.title}}</h1> -->
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import product from './components/product.vue';
+const axios = require('axios');
+//
 export default {
+  data(){
+   return {
+      list:[]
+    }
+  },
   name: 'app',
   components: {
-    HelloWorld
+    product
+  },
+  mounted(){
+    axios
+      .get('./products.json')
+      .then(response => {
+          this.list = response.data;
+          });
   }
-}
+};
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
 </style>
