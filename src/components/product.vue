@@ -8,7 +8,6 @@
                 </div>                                
                 <div class="product_photo">
                     <a href="#" class="url--link product__link">
-                        <!-- <img src="misc/df126-52f2-11e5-b9a9-00259036a192_220x220_1.jpg"> -->
                         <img :src="prod.primaryImageUrl">
                     </a>                                    
                 </div>

@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <product v-for="prod in list" v-bind:prod="prod"/>
+
   </div>
 </template>
 
@@ -20,7 +21,7 @@ export default {
   },
   mounted(){
     axios
-      .get('./products.json')
+      .get('./products.json')//qwerty
       .then(response => {
           this.list = response.data;
           });
