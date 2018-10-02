@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <product v-for="prod in list" v-bind:prod="prod"/>
-<!--     <h1 v-for="prod in list">{{prod.title}}</h1> -->
   </div>
 </template>
 

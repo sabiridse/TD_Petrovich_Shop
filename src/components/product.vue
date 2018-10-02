@@ -18,11 +18,6 @@
                 <div class="product_tags hidden-sm">
                     <p>Могут понадобиться:</p>
                     <a href="#" class="url--link">{{prod.assocProducts}}</a>
-                    <!-- <a href="#" class="url--link">плинтус натуральный,</a>
-                    <a href="#" class="url--link">рулетка,</a>
-                    <a href="#" class="url--link">набор для укладки ламината,</a>
-                    <a href="#" class="url--link">ножовка по ламинату,</a>
-                    <a href="#" class="url--link">гель для стыков ламината Clic Protect.</a> -->
                 </div>
                 <div class="product_units">
                     <div class="unit--wrapper">
