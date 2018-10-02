@@ -8,7 +8,7 @@
                 </div>                                
                 <div class="product_photo">
                     <a href="#" class="url--link product__link">
-                        <img :src="prod.primaryImageUrl">
+                        <img :src="imageUrlMod">
                     </a>                                    
                 </div>
                 <div class="product_description">
@@ -21,10 +21,10 @@
                 <div class="product_units">
                     <div class="unit--wrapper">
                         <div :class="unitSelect1">
-                            <p class="ng-binding" @click="unitSelectChoise1">За м. кв.</p>
+                            <p class="ng-binding" @click="unitSelectChoise(1)">За м. кв.</p>
                         </div>
                         <div :class="unitSelect2">
-                            <p class="ng-binding" @click="unitSelectChoise2">За упаковку</p>
+                            <p class="ng-binding" @click="unitSelectChoise(2)">За упаковку</p>
                         </div>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                             <span class="stepper-arrow down" @click="countDown"></span>                                           
                         </div>
                     </div>
-                    <span class="btn btn_cart" data-url="/cart/" data-product-id="9bf0afd7-5190-11e5-b9a9-00259036a192">
+                    <span class="btn btn_cart" data-url="/cart/" :data-product-id="prod.productId">
                         <svg class="ic ic_cart">
                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cart"></use>
                         </svg>
@@ -86,14 +86,21 @@
 				code:0,
 				nameprod:"non",
 				count:1,
-				unitSelect2:"unit--select unit--active",
-				unitSelect1:"unit--select",
-				priceGold: this.prod.priceGold,
-				priceRetail: this.prod.priceRetail
+				unitSelect1:"unit--select unit--active",
+				unitSelect2:"unit--select",
+				priceGold: this.prod.priceGoldAlt,
+				priceRetail: this.prod.priceRetailAlt
 			}
 		},
 		name: 'product',
 		props: ['prod'],
+        computed:{
+            imageUrlMod: function(){
+                let primary = this.prod.primaryImageUrl;
+                let last4simvols = primary.substring(primary.length-4);
+                return primary.replace(last4simvols,"_220x220_1"+last4simvols);
+            }
+        },
 		methods: {
 			countUp(){
 				this.count++;
@@ -103,34 +110,23 @@
 					this.count--;
 				}				
 			},
-			unitSelectChoise1(){
-				if(this.unitSelect1 == "unit--select unit--active"){
-					this.unitSelect1="unit--select";
-					this.unitSelect2="unit--select unit--active";
-					this.priceGold=this.prod.priceGoldAlt;
-					this.priceRetail=this.prod.priceRetailAlt;
-				};
-				if(this.unitSelect1 == "unit--select"){
-					this.unitSelect2="unit--select";
-					this.unitSelect1="unit--select unit--active";
-					this.priceGold=this.prod.priceGold;
-					this.priceRetail=this.prod.priceRetail;
-				};
-			},
-			unitSelectChoise2(){
-				if(this.unitSelect2 == "unit--select unit--active"){
-					this.unitSelect2="unit--select";
-					this.unitSelect1="unit--select unit--active";
-					this.priceGold=this.prod.priceGold;
-					this.priceRetail=this.prod.priceRetail;
-				};
-				if(this.unitSelect2 == "unit--select"){
-					this.unitSelect1="unit--select";
-					this.unitSelect2="unit--select unit--active";
-					this.priceGold=this.prod.priceGoldAlt;
-					this.priceRetail=this.prod.priceRetailAlt;
-				};
+			unitSelectChoise(trigger){
+                switch(trigger) {
+                    case 1:
+                        this.unitSelect1="unit--select unit--active";
+                        this.unitSelect2="unit--select";
+                        this.priceGold=this.prod.priceGoldAlt;
+                        this.priceRetail=this.prod.priceRetailAlt;
+                        break;
+                    case 2:
+                        this.unitSelect1="unit--select";
+                        this.unitSelect2="unit--select unit--active";
+                        this.priceGold=this.prod.priceGold;
+                        this.priceRetail=this.prod.priceRetail;
+                        break;
+                }
 			}
+
 		}
 	};
 </script>

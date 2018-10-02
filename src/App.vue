@@ -21,7 +21,7 @@ export default {
   },
   mounted(){
     axios
-      .get('./products.json')//qwerty
+      .get('./products.json')
       .then(response => {
           this.list = response.data;
           });
