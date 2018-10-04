@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
+import './plugins/bootstrup-vue'
 
 Vue.config.productionTip = false
-//const userData = require(‘axample.json’)
 new Vue({
   render: h => h(App)
 }).$mount('#app')
